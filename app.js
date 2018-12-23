@@ -35,10 +35,10 @@ let spaceShip = {
     name: "The Milano",
     hull: 20,
     firepower: 5, //accuracy 70 percent
-    attack: function() {
-        alien.hull -= spaceShip.firepower
-        console.log(spaceShip.name + " has attacked " + alien.name + " for " + spaceShip.firepower + " damage.")
-        console.log("The " + alien.name + " hull is at " + alien.hull + " health.")
+    attack: function(enemy) {
+        enemy.hull -= spaceShip.firepower
+        console.log(spaceShip.name + " has attacked " + enemy.name + " for " + spaceShip.firepower + " damage.")
+        console.log("The " + enemy.name + " hull is at " + enemy.hull + " health.")
 
     }
 
@@ -47,10 +47,10 @@ let spaceShip = {
 let alien = new Aliens("Dark Aster")
 let alien2 = new Aliens("Bird of Prey")
 
-
+//ship function
 let ship1 = function() {
     while (alien.hull >= 0 && spaceShip.hull > 0) {
-        spaceShip.attack()
+        spaceShip.attack(alien)
         if (alien.hull > 0) {
             alien.attack()
         } else if (alien.hull <= 0) {
@@ -63,4 +63,21 @@ let ship1 = function() {
 }
 
 
+let ship2 = function() {
+    while (alien2.hull >= 0 && spaceShip.hull > 0) {
+        spaceShip.attack(alien2)
+        if (alien2.hull > 0) {
+            alien2.attack()
+        } else if (alien2.hull <= 0) {
+            console.log("Next ship!")
+            break;
+        }
+
+
+    }
+}
+
+
 ship1()
+ship2()
+
