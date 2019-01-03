@@ -12,8 +12,8 @@ let spaceshipAccuracy = function() {
     return Math.floor(Math.random() * 11) + 0
 
 }
-let alienAccuracy = function(){
-    return Math.floor(Math.random()*11) + 0
+let alienAccuracy = function() {
+    return Math.floor(Math.random() * 11) + 0
 }
 
 
@@ -35,10 +35,10 @@ class Aliens {
 
     }
     attack(enemy) {
-      
+
         let damage = randomFirepower()
-          if (alienAccuracy() <= 8)
-        spaceShip.hull -= damage
+        if (alienAccuracy() <= 8)
+            spaceShip.hull -= damage
         console.log(this.name + " has attacked " + spaceShip.name + " for " + damage + " damage.")
         console.log(spaceShip.name + " hull is at " + spaceShip.hull + " health.")
         //console.log(hash)
@@ -74,11 +74,12 @@ let ship1 = function() {
         if (alien.hull > 0 && spaceShip.hull > 0) {
             alien.attack()
         } else if (alien.hull <= 0) {
-           // $(".yes").show()
-            console.log("Next ship!")
+
+            console.log("Next Ship!")
+
             console.log(hash)
 
-            
+
 
             break;
         }
@@ -89,15 +90,15 @@ let ship1 = function() {
 
 //second ship battle
 let ship2 = function() {
-    while (alien2.hull >= 0 && spaceShip.hull > 0) {
+    while (alien.hull <= 0 && alien2.hull >= 0 && spaceShip.hull > 0) {
         spaceShip.attack(alien2)
         if (alien2.hull > 0 && spaceShip.hull > 0) {
             alien2.attack()
         } else if (alien2.hull <= 0) {
-              //$(".yes").show()
+            //$(".yes").show()
             console.log("Next ship!")
             console.log(hash)
-           
+
             break;
         }
 
@@ -120,6 +121,11 @@ let ship3 = function() {
     }
 }
 
+let refresh = function(){
+    window.location.reload(true);
+}
+
+
 //ship1()
 //continue yes or no
 //if(alien.hull <= 0) 
@@ -128,14 +134,12 @@ let ship3 = function() {
 
 let container = $('#container')
 let $h1 = '<h1>Space Game</h1>'
-let $round1 = '<h2><button onclick="ship1()">Attack</button></h2>'
-let $round2 = '<h3><button onclick ="ship2()">Attack</button></h3>'
-
+let $round1 = '<h2><button onclick="ship1()">Start Game</button></h2>'
+let $round2 =  '<h2><button onclick ="ship2()">ATTACK NEXT SHIP</button></h2>'
+let $refresh = '<h2><button onclick ="refresh()">RETREAT</button></h2>'
+let $round3 =  '<h2><button onclick ="ship3()">ATTACK NEXT SHIP</button></h2>'
 
 
 
 container.append($h1)
-container.append($round1).append($round2)
-
-
-
+container.append($round1).append($refresh).append($round2).append($refresh).append($round3)
