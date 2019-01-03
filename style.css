@@ -1,8 +1,16 @@
 body {
 	text-align: center;
 	font-family: Baskerville;
+	background-image: url("http://www.wallpapershdin.com/walls/light-abstract-outer-space-planets-fantasy-art-moons-wide.jpg");
+
 
 }
 button:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
 }
+
+h1{
+	color: white;
+}
+

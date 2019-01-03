@@ -12,6 +12,11 @@ let spaceshipAccuracy = function() {
     return Math.floor(Math.random() * 11) + 0
 
 }
+let alienAccuracy = function(){
+    return Math.floor(Math.random()*11) + 0
+}
+
+
 
 
 
@@ -30,7 +35,9 @@ class Aliens {
 
     }
     attack(enemy) {
+      
         let damage = randomFirepower()
+          if (alienAccuracy() <= 8)
         spaceShip.hull -= damage
         console.log(this.name + " has attacked " + spaceShip.name + " for " + damage + " damage.")
         console.log(spaceShip.name + " hull is at " + spaceShip.hull + " health.")
@@ -67,11 +74,13 @@ let ship1 = function() {
         if (alien.hull > 0 && spaceShip.hull > 0) {
             alien.attack()
         } else if (alien.hull <= 0) {
+           // $(".yes").show()
             console.log("Next ship!")
             console.log(hash)
-            ship2();
 
-            //break;
+            
+
+            break;
         }
 
 
@@ -85,10 +94,11 @@ let ship2 = function() {
         if (alien2.hull > 0 && spaceShip.hull > 0) {
             alien2.attack()
         } else if (alien2.hull <= 0) {
+              //$(".yes").show()
             console.log("Next ship!")
             console.log(hash)
-            ship3();
-            //break;
+           
+            break;
         }
 
 
@@ -112,16 +122,20 @@ let ship3 = function() {
 
 //ship1()
 //continue yes or no
+//if(alien.hull <= 0) 
+//ship2()
+//ship3()
 
 let container = $('#container')
 let $h1 = '<h1>Space Game</h1>'
 let $round1 = '<h2><button onclick="ship1()">Attack</button></h2>'
+let $round2 = '<h3><button onclick ="ship2()">Attack</button></h3>'
+
 
 
 
 container.append($h1)
-container.append($round1)
-
+container.append($round1).append($round2)
 
 
 
